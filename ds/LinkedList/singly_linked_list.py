@@ -94,23 +94,54 @@ class SinglyLinkedList:
         curr_last_node.next = self.head
         self.head = new_head
 
+    def detect_loop_hashing(self):
+        s = set()
+        temp = self.head
+        while(temp):
+            if temp in s:
+                return True
+            s.add(temp)
+            temp = temp.next
+        return False
 
+    def detect_loop_floyd(self):
+        slow_p = self.head
+        fast_p = self.head
+        while (slow_p and fast_p and fast_p.next):
+            slow_p = slow_p.next
+            fast_p = fast_p.next.next
+            if slow_p == fast_p:
+                print("Found Loop")
+                return
 
 s_list = SinglyLinkedList()
-s_list.head = Node(1)
-second = Node(2)
-third = Node(3)
-
-s_list.head.next = second
-second.next = third
-s_list.printlist()
+# s_list.head = Node(1)
+# second = Node(2)
+# third = Node(3)
+# s_list.head.next = second
+# second.next = third
+# s_list.printlist()
+# s_list.push(4)
+# s_list.printlist()
+# s_list.insert_after(s_list.head.next,5)
+# s_list.printlist()
+# s_list.append(6)
+# s_list.printlist()
+# print(s_list.middle_element())
+# print(s_list.get_nth_from_end(6))
+# s_list.rotate(3)
+# s_list.printlist()
+s_list.push(10)
 s_list.push(4)
-s_list.printlist()
-s_list.insert_after(s_list.head.next,5)
-s_list.printlist()
-s_list.append(6)
-s_list.printlist()
-print(s_list.middle_element())
-print(s_list.get_nth_from_end(6))
-s_list.rotate(3)
-s_list.printlist()
+s_list.push(15)
+s_list.push(20)
+s_list.push(50)
+
+# Create a loop for testing
+s_list.head.next.next.next.next.next = s_list.head
+
+if (s_list.detect_loop_hashing()):
+    print("Loop found")
+else:
+    print("No Loop ")
+s_list.detect_loop_floyd()

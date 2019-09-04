@@ -1,15 +1,14 @@
-def subarray_sum(n, sum_val, arr):
-    curr_sum = 0
-    for i in range(n):
-        for
+# Python program to find maximum contiguous subarray
 
+def maxSubArraySum(a, size):
+    max_so_far = a[0]
+    curr_max = a[0]
 
+    for i in range(1, size):
+        curr_max = max(a[i], curr_max + a[i])
+        max_so_far = max(max_so_far, curr_max)
 
+    return max_so_far
 
-
-test_cases = int(input())
-for i in range(test_cases):
-    size_of_array, sum_search_val = size_of_array, sum_search_val = list(map(str,input().split()))
-    arr = list(map(int, input().split()))
-    num = subarray_sum(size_of_array, sum_search_val, arr)
-    print(int(num))
+a = [-13, -3, -25, -20, -3, -16, -23, -12, -5, -22, -15, -4, -7]
+print(maxSubArraySum(a, len(a)))
