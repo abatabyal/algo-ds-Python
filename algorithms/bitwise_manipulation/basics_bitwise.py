@@ -10,6 +10,10 @@ def toggle_rmb(n):
 def self_and(n):
     return n & n
 
-val = self_and(0b01001011)
-print(val)
-print(int('01001011', 2))
+def odd_even(n):
+     if (n & 1):
+         return 'odd'
+     else:
+         return 'even'
+
+print(odd_even(5))
