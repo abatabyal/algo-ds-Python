@@ -11,3 +11,8 @@ def isEven(n):
 # Driver code
 n = 10;
 print("Even" if isEven(n) else "Odd")
+
+arr = ["Even", "Odd"]
+print ("Enter the number")
+no = input()
+print (arr[int(no) % 2])

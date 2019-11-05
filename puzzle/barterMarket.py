@@ -18,4 +18,6 @@ def bmarket(n, m, x, y):
             n = n - 1
     return fiction_books
 
-print(bmarket(393, 896, 787, 920))
+#print(bmarket(393, 896, 787, 920))
+print(bmarket(4, 8, 4, 3))
+
