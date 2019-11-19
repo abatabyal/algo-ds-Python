@@ -9,6 +9,7 @@ def restock(items, target):
             return target - curr_sum
         if curr_sum > target and (i+1) <= nos_items:
             return curr_sum - target
+
 items = [174, 156, 167, 138, 187, 111, 196, 140, 100, 156]
 target = 1522
 print(restock(items, target))
