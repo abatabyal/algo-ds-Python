@@ -1,12 +1,12 @@
 def fibo(n):
-    fib = [None] * (n)
-    if n == 0 or n == 1:
-        return 1
-    fib[0] = 1
-    fib[1] = 1
-
-    for i in range(2, n):
-        fib[i] = fib[i - 1] + fib[i -2]
-    return fib[n-1]
+    memo = {}
+    if n in memo:
+        return memo[n]
+    else:
+        if n <= 2:
+            memo[n] = 1
+        else:
+            memo[n] = fibo(n-1) + fibo(n-2)
+    return memo[n]
 
 print(fibo(9))
