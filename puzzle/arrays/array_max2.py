@@ -15,20 +15,47 @@ print(max_2_num(arr))
 def max_3_num(arr):
     if len(arr) < 3:
         return
-    max = 0
-    max_2 = 0
-    max_3 = 0
+    first = 0
+    second = 0
+    third = 0
     for i in range(len(arr)):
-        if arr[i] > max:
-            max_2 = max
-            max_3 = max_2
-            max = arr[i]
-        elif arr[i] > max_2:
-            max_3 = max_2
-            max_2 = arr[i]
-        elif arr[i] > max_3:
-            max_3 = arr[i]
-    return max_3
+        if arr[i] > first:
+           third = second
+           second = first
+           first = arr[i]
+        elif arr[i] > second:
+            third = second
+            second = arr[i]
+        elif arr[i] > third:
+            third = arr[i]
+    return third
 
 a = [5, 7, 99, -9, 89]
 print(max_3_num(a))
+
+def max_4_num(arr):
+    if len(arr) < 4:
+        return
+    first = 0
+    second = 0
+    third = 0
+    fourth = 0
+    for i in range(len(arr)):
+        if arr[i] > first:
+            fourth = third
+            third = second
+            second = first
+            first = arr[i]
+        elif arr[i] > second:
+            fourth = third
+            third = second
+            second = arr[i]
+        elif arr[i] > third:
+            fourth = third
+            third = arr[i]
+        elif arr[i] > fourth:
+            fourth = arr[i]
+    return fourth + third + second + first
+
+a = [1, 2, 3, 4, 12, 34]
+print(max_4_num(a))
