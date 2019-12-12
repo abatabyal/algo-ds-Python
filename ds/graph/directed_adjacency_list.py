@@ -11,12 +11,9 @@ class Graph:
 
     def bfs(self, s):
         visited = [False] * len(self.graph)
-
         queue = []
-
         queue.append(s)
         visited[s] = True
-
         while queue:
             s = queue.pop(0)
             print(s, end="")
@@ -27,25 +24,60 @@ class Graph:
                     visited[i] = True
         print('\r')
 
+    def dfs(self, N):
+        visited = [False] * N
+        for i in range(N):
+            if visited[i] == False:
+                self.dfs_util(i, visited)
+
     def dfs_util(self, v, visited):
         visited[v] = True
-        print(v, end="")
-
+        print(v, end=" ")
         for i in self.graph[v]:
             if visited[i] == False:
                 self.dfs_util(i, visited)
 
-    def dfs(self):
-        visited = [False] * len(self.graph)
-        for i in range(len(self.graph) - 1):
+    def bfs_disc(self, N):
+        visited = [False] * N
+        for i in range(N):
             if visited[i] == False:
-                self.dfs_util(i, visited)
+                self.bfs_util_disc(i, visited)
 
-g = Graph(5)
-g.add_edge(0, 1)
-g.add_edge(0, 2)
-g.add_edge(0, 3)
-g.add_edge(2, 4)
+    def bfs_util_disc(self, v, visited):
+        queue = []
+        queue.append(v)
+        visited[v] = True
 
-#g.bfs(2)
-g.dfs()
+        while queue:
+            v = queue.pop(0)
+            print(v, end=' ')
+
+            for i in self.graph[v]:
+                if visited[i] == False:
+                    queue.append(i)
+                    visited[i] = True
+
+    def topological_sort(self, N):
+        visited = [False] * N
+        stack = []
+        for i in range(N):
+            if visited[i] == False:
+                self.top_util(i, visited, stack)
+        print(stack)
+
+    def top_util(self, v, visited, stack):
+        visited[v] =  True
+
+        for i in self.graph[v]:
+            if visited[i] == False:
+                self.top_util(i, visited, stack)
+        stack.insert(0, v)
+
+g = Graph(6)
+g.add_edge(5, 2)
+g.add_edge(5, 0)
+g.add_edge(4, 0)
+g.add_edge(4, 1)
+g.add_edge(2, 3)
+g.add_edge(3, 1)
+g.topological_sort(6)
