@@ -116,7 +116,7 @@ class SinglyLinkedList:
                 return
 
 
-s_list = SinglyLinkedList()
+# s_list = SinglyLinkedList()
 # s_list.head = Node(1)
 # second = Node(2)
 # third = Node(3)
@@ -133,17 +133,17 @@ s_list = SinglyLinkedList()
 # print(s_list.get_nth_from_end(6))
 # s_list.rotate(3)
 # s_list.printlist()
-s_list.push(10)
-s_list.push(4)
-s_list.push(15)
-s_list.push(20)
-s_list.push(50)
-
-# Create a loop for testing
-s_list.head.next.next.next.next.next = s_list.head
-
-if (s_list.detect_loop_hashing()):
-    print("Loop found")
-else:
-    print("No Loop ")
-s_list.detect_loop_floyd()
+# s_list.push(10)
+# s_list.push(4)
+# s_list.push(15)
+# s_list.push(20)
+# s_list.push(50)
+#
+# # Create a loop for testing
+# s_list.head.next.next.next.next.next = s_list.head
+#
+# if (s_list.detect_loop_hashing()):
+#     print("Loop found")
+# else:
+#     print("No Loop ")
+# s_list.detect_loop_floyd()
