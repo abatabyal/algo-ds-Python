@@ -1,8 +1,9 @@
 class Node:
 
-    def __init__(self, data = None):
+    def __init__(self, data=None):
         self.next = None
         self.data = data
+
 
 class SinglyLinkedList:
 
@@ -31,7 +32,7 @@ class SinglyLinkedList:
             return
 
         last = self.head
-        while(last.next):
+        while (last.next):
             last = last.next
 
         last.next = new_node
@@ -39,7 +40,7 @@ class SinglyLinkedList:
 
     def printlist(self):
         temp = self.head
-        while(temp):
+        while (temp):
             if temp != self.head:
                 print('--->', end='')
             print(f'{temp.data}', end='')
@@ -49,7 +50,7 @@ class SinglyLinkedList:
     def middle_element(self):
         temp = self.head
         list_len = 0
-        while(temp):
+        while (temp):
             list_len += 1
             temp = temp.next
         mid_index = list_len // 2
@@ -62,7 +63,7 @@ class SinglyLinkedList:
     def get_len(self):
         temp = self.head
         list_len = 0
-        while (temp):
+        while temp:
             list_len += 1
             temp = temp.next
         return list_len
@@ -84,11 +85,11 @@ class SinglyLinkedList:
         new_head = self.head
         new_tail = None
         for i in range(n):
-            if i == n-1:
+            if i == n - 1:
                 new_tail = new_head
             new_head = new_head.next
         curr_last_node = self.head
-        while(curr_last_node.next != None):
+        while (curr_last_node.next != None):
             curr_last_node = curr_last_node.next
         new_tail.next = None
         curr_last_node.next = self.head
@@ -97,7 +98,7 @@ class SinglyLinkedList:
     def detect_loop_hashing(self):
         s = set()
         temp = self.head
-        while(temp):
+        while (temp):
             if temp in s:
                 return True
             s.add(temp)
@@ -113,6 +114,7 @@ class SinglyLinkedList:
             if slow_p == fast_p:
                 print("Found Loop")
                 return
+
 
 s_list = SinglyLinkedList()
 # s_list.head = Node(1)
