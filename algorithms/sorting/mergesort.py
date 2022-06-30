@@ -1,44 +1,64 @@
-def mergesort(arr):
+def split(arr_list: list) -> list:
+    """
 
-    if len(arr) > 1:
+    :param arr_list: input list
+    :return: splits the input list in two halves
+    Used for loop instead of split function to reduce time complexity.O(logn)
+    split function increases time complexity to O(kn)
+    """
+    left_half = []
+    right_half = []
+    size = len(arr_list)
+    midpoint = size // 2
+    for i in range(midpoint):
+        left_half.append(arr_list[i])
+    for midpoint in range(midpoint, size):
+        right_half.append(arr_list[midpoint])
+    return left_half, right_half
 
-        mid = len(arr) // 2
 
-        L = arr[:mid]
-        R = arr[mid:]
+def merge(left: list, right: list) -> list:
+    """
 
-        mergesort(L)
-        mergesort(R)
+    :param left:
+    :param right:
+    :return:
+    takes O(n)
+    """
+    sorted_merged = []
+    l = 0
+    r = 0
+    while l < len(left) and r < len(right):
+        if left[l] < right[r]:
+            sorted_merged.append(left[l])
+            l += 1
+        else:
+            sorted_merged.append(right[r])
+            r += 1
+    while l < len(left):
+        sorted_merged.append(left[l])
+        l += 1
+    while r < len(right):
+        sorted_merged.append(right[r])
+        r += 1
+    return sorted_merged
 
-        i = j = k = 0
 
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
+def merge_sort(arr_list: list) -> list:
+    """
 
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
+    :param arr_list:
+    :return:
+    O(nlogn)
+    """
+    if len(arr_list) <= 1:
+        return arr_list
+    left_half, right_half = split(arr_list)
 
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
+    left_sorted = merge_sort(left_half)
+    right_sorted = merge_sort(right_half)
+    return merge(left_sorted, right_sorted)
 
-def printList(arr):
-    for i in range(len(arr)):
-        print(arr[i])
-    print()
 
-arr = [12, 11, 13, 5, 6, 7]
-print ("Given array is")
-printList(arr)
-mergesort(arr)
-print("Sorted array is: ")
-printList(arr)
+input_list = [55, 27, 32]
+print(merge_sort(input_list))
